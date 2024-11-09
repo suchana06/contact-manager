@@ -1,0 +1,131 @@
+html {
+    background-color: #56baed;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+    height: 100vh;
+  }
+  .wrapper {
+    width: 100%;
+    max-width: 400px;  /* Limits the form width */
+    padding: 20px;
+}
+
+#formContent {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+.fadeIn {
+    font-size: 16px;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+
+.fadeIn.fourth {
+    background-color: #20b1a5;  /* Green color for login button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fadeIn.fourth:hover {
+    background-color: #30a78d;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.alert-danger {
+    color: #d8000c;
+    background-color: #ffdddd;
+}
+
+.alert-success {
+    color: #149696;
+    background-color: #ddffdd;
+}
+  a {
+    color: #92badd;
+    display:inline-block;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 40px 8px 10px 8px; 
+    color: #cccccc;
+  }
+  
+img{
+    border: 3px solid black;
+}
+
+.bg-primary{
+    background-color: #089789!important;
+}
+.banner{
+    width: 100%;
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)) ,url(../images/banner.jpg);
+    /* color: white; */
+    background-size: cover;
+}
+
+
+/* sidebar  */
+@media(max-width: 600) {
+    .sidebar {
+        display: none;
+    }
+    .content {
+        margin-left: 0; /* Reset content margin */
+    }
+}
+
+
+.sidebar{
+    width: 18%;
+    background: white;
+    height: 100%;
+    position: fixed;
+    padding-top: 45px;
+}
+.sidebar a{
+    display: block;
+    width: 100%;
+    color: gray;
+    text-decoration: none;
+    padding: 10px 25px;
+}
+.sidebar a:hover{
+    background: #e2e2e2;
+}
+.sidebar .crossbtn{
+    position: absolute;
+    top:0;
+    right: 35px;
+    cursor: pointer;
+    font-size: 36px;
+}
+.content{
+    margin-left: 20%;
+}
