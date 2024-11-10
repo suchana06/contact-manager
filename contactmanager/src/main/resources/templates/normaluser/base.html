@@ -36,17 +36,24 @@
         <div class="sidebar">
           <i onclick="toggle()" class="fa-solid fa-xmark crossbtn"></i>
           
-          <a href="#" class="item"> <i class="fa-solid fa-house"></i> Home</a>
+          <a th:href="@{/user/index}" class="item"> <i class="fa-solid fa-house"></i> Home</a>
             <a href="#" class="item"><i class="fa-regular fa-eye"></i>  View contacts</a>
-            <a href="#" class="item"><i class="fa-solid fa-plus"></i>  Add contact</a>
+            <a th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i>  Add contact</a>
             <a href="#" class="item"><i class="fa-solid fa-user"></i>  Your profile</a>
             <a href="#" class="item"><i class="fa-solid fa-gear"></i>  Settings</a>
-            <a href="#" class="itme"><i class="fa-solid fa-right-from-bracket"></i>  </i>Logout</a>
+            <a th:href="@{/logout}" class="itme"><i class="fa-solid fa-right-from-bracket"></i> </i>Logout</a>
             <div class="divider"></div>
 
         </div>
         <div class="content">
-          <i onclick="toggle()" class="fa-solid fa-bars"></i>
+          <i onclick="toggle()" class="fa-solid fa-bars" style="cursor: pointer;"></i>
+
+          <div class="container" th:if="${session.message}">
+            <div th:classappend="${'alert-'+ session.message.type}" class="alert">
+              <p th:text="${session.message.content}"></p>
+            </div>
+          </div>
+
         <div th:replace="${content}"></div>
         </div>
     </div>

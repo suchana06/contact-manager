@@ -67,12 +67,12 @@ html {
   
   h2 {
     text-align: center;
-    font-size: 16px;
+    /* font-size: 16px; */
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: #cccccc;
+    /* margin: 40px 8px 10px 8px;  */
+    color: #5e5555;
   }
   
 img{
@@ -104,7 +104,7 @@ img{
 
 .sidebar{
     width: 18%;
-    background: white;
+    background: rgb(221, 220, 220);
     height: 100%;
     position: fixed;
     padding-top: 45px;
@@ -128,4 +128,5 @@ img{
 }
 .content{
     margin-left: 20%;
+    padding-left: 2%;
 }
