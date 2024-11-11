@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="container text-center">
+                    <img style="height: 300px; width: 300px; object-fit: cover;" th:src="@{'/images/banner.jpg'}" alt="profile image" >
+                </div>
+                <div class="container text-center my-4">
+                <h2 class=""> <span th:text="${user.name}"></span></h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#USERID</th>
+                            <td th:text="${user.id}"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Email</th>
+                            <td th:text="${user.email}"></td>
+                        </tr>
+                        <tr>
+                            <th>Your Role</th>
+                            <td th:text="${user.role}"></td>
+                        </tr>
+                        <tr>
+                            <th>Active status</th>
+                            <td th:text="${user.enabled}"></td>
+                        </tr>
+                        <tr>
+                            <th>About You</th>
+                            <td th:text="${user.about}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+               
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

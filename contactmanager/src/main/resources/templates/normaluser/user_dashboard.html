@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <section>
-        <h3>this page is protected</h3>
-        <h2>This is user dashboard</h2>
+        <div class="bg-white shadow-lg rounded-lg h-[32rem]">
+
+            <!-- Image Section -->
+            <div class="flex justify-center pt-8 text-center mt-7">
+                <img th:src="@{/images/contact.png}" alt="Dashboard Image" class="w-32 h-32 rounded-full shadow-md">
+            </div>
+
+            <!-- Tagline Section -->
+            <div class="text-center py-6 mt-6">
+                <h2 class="text-2xl font-bold text-gray-800">Welcome to Smart Contact Manager</h2>
+                <h3 class="text-gray-600 mt-2">Manage all your contacts easily and efficiently</h3>
+            </div>
+
+            <!-- Button Section -->
+             
+            <div class="container text-center justify-center pb-8 mt-7">
+                <a th:href="@{/user/add-contact}"
+                class="bg-blue-900 hover:bg-blue-900 rounded-md btn btn-primary">
+                    Start Adding Contacts
+                </a>
+            </div>
+
+        </div>
+
     </section>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section>
+        <h2 class="text-center">Update Contact</h2>
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-semibold text-center mb-6 text-gray-800">Contact Form</h2>
+            <form th:action="@{/user/process-update}" method="POST" enctype="multipart/form-data"
+                th:object="${contact}">
+
+                <input type="hidden" th:value="${contact.cId}" name="cId">
+
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">First Name: </label>
+                    <input type="text" id="name" name="name" th:value="${contact.name}"
+                        placeholder="Enter first name here" required
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500">
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="secondName" class="block text-gray-700 font-medium mb-2">Second Name: </label>
+                    <input type="text" placeholder="Enter second name here" id="secondName" name="secondName"
+                        th:value="${contact.secondName}" required
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Email: </label>
+                    <input type="email" th:value="${contact.email}" id="email" name="email"
+                        placeholder="Enter email here" required
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div class="mb-4">
+                    <label for="image" class="block text-gray-700 font-medium mb-2">Profile Image: </label>
+                    <input type="file" id="image" name="profileimage" accept="image/*"
+                        class="w-full text-gray-800 focus:outline-none">
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 font-medium mb-2">Description: </label>
+                    <textarea id="mytextarea" name="description" th:text="${contact.description}" rows="10"
+                        placeholder="Add contact description"
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="work" class="block text-gray-700 font-medium mb-2">Work: </label>
+                    <input type="text" id="work" th:value="${contact.work}" placeholder="Enter work place here"
+                        name="work"
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div class="mb-6">
+                    <label for="phone" class="block text-gray-700 font-medium mb-2">Phone: </label>
+                    <input type="text" id="phone" name="phone" th:value="${contact.phone}" placeholder="123-456-7890"
+                        class="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="w-full bg-blue-500 font-semibold py-2 rounded-md hover:bg-blue-600">Update
+                        Contact</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.tiny.cloud/1/7pfkhr57xv9jnj1vja412i4wuhwby3w9xc838ib7rg1wvfrd/tinymce/7/tinymce.min.js"
+            referrerpolicy="origin"></script>
+
+        <script>
+            tinymce.init({
+                selector: '#mytextarea',
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            });
+        </script>
+    </section>
+</body>
+
+</html>

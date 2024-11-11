@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <section>
+    <div class="card">
+        <div class="container">
+            <div th:if="${message}" th:classappend="${message.type}" class="alert" role="alert">
+                <p class="text-center" th:text="${message.content}"></p>
+            </div>
+        </div>
+        <div class="card-body" th:if="${contact}">
+            <div class="container text-center">
+                <img style="height: 300px; width: 300px; object-fit: cover;" th:src="@{'/images/'+${contact.image}}" alt="profile image" >
+            </div>
+            <div class="container text-center my-4">
+            <h2 class=""> <span th:text="${contact.name}"></span>( <span th:text="${contact.secondName}"></span> )</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <td th:text="${contact.cId}"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Work</th>
+                        <td th:text="${contact.work}"></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td th:text="${contact.email}"></td>
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td th:text="${contact.phone}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="description">
+                <th:block th:utext="${contact.description}"></th:block>
+            </div>
+            <div class="container">
+                <a th:onclick="|deleteContact(${contact.cId})|" class="btn btn-danger">Delete Contact</a>
+                <form th:action="@{'/user/update/'+${contact.cId}}" method="post">
+                    <button type="submit" class="btn btn-primary">Update Contact</button>
+                  </form>
+            </div>
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center bg-danger mr-4 text-white" th:unless="${contact}">You dont have permission to access this contact</h1>
+
+  </section>
+
+</body>
+
+</html>

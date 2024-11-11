@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <section>
+    <div class="card mr-4">
+      <div class="container">
+        <div th:if="${message}" th:classappend="${message.type}" class="alert" role="alert">
+          <p class="text-center" th:text="${message.content}"></p>
+        </div>
+        <th:block th:text="${@sessionHelper.removeSession()}"></th:block>
+      </div>
+      <div class="card-body">
+        <h2 class="text-center">Your List of Contacts</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="c : ${contacts}">
+              <th scope="row" th:text="${c.cId}"></th>
+              <td scope="row">
+                <img class="my-profile" th:src="@{'/images/'+${c.image}}" alt="profile picture">
+                <span th:text="${c.name}"></span>
+              </td>
+              <td scope="row">
+                <a th:href="@{'/user/contact/'+${c.cId}}"><span th:text="${c.email}"></span></a>
+              </td>
+              <td scope="row" th:text="${c.phone}"></td>
+              <td>
+                <!-- <button th:href="'/user/delete/'+${c.cId}" class="btn btn-danger">Delete Contact</button> -->
+
+                <a th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger md-3">Delete Contact</a>
+
+                <form th:action="@{'/user/update/'+${c.cId}}" method="post">
+                  <button type="submit" class="btn btn-primary">Update Contact</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+
+</html>
