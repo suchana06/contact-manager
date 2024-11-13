@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
   <section>
     <div class="card mr-4">
       <div class="container">
@@ -19,6 +18,13 @@
       </div>
       <div class="card-body">
         <h2 class="text-center">Your List of Contacts</h2>
+
+        <div class="search-container">
+          <input onkeyup="search()" type="text" class="form-control" placeholder="Search a contact" id="search-input">
+          <div class="search-result">
+          </div>
+        </div>
+
         <table class="table">
           <thead>
             <tr>
@@ -55,7 +61,7 @@
       </div>
     </div>
   </section>
-
+  <script th:src="@{js/script.js}"></script>
 
 </body>
 
