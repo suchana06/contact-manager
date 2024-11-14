@@ -15,6 +15,7 @@
                 </div>
                 <div class="container text-center my-4">
                 <h2 class=""> <span th:text="${user.name}"></span></h2>
+                <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
@@ -41,10 +42,14 @@
                         </tr>
                     </tbody>
                 </table>
-               
+               </div>
                 </div>
             </div>
         </div>
+        <script>
+            let home = document.getElementById("profile-link");
+            home.style.backgroundColor="#e2e2e2";
+        </script>
     </section>
     
 </body>

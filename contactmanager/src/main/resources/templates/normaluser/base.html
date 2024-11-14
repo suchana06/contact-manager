@@ -27,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto text-capitalize">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+            <a class="nav-link" aria-current="page" th:href="@{/}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" th:text="${user.name}"></a>
@@ -42,11 +42,11 @@
   <div class="sidebar">
     <i onclick="toggle()" class="fa-solid fa-xmark crossbtn"></i>
 
-    <a th:href="@{/user/index}" class="item"> <i class="fa-solid fa-house"></i> Home</a>
-    <a th:href="@{/user/view-contact}" class="item"><i class="fa-regular fa-eye"></i> View contacts</a>
-    <a th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i> Add contact</a>
-    <a th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Your profile</a>
-    <a href="#" class="item"><i class="fa-solid fa-gear"></i> Settings</a>
+    <a id="home-link" th:href="@{/user/index}" class="item"> <i class="fa-solid fa-house"></i> Home</a>
+    <a id="contacts-link" th:href="@{/user/view-contact}" class="item"><i class="fa-regular fa-eye"></i> View contacts</a>
+    <a id="add-link" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i> Add contact</a>
+    <a id="profile-link" th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Your profile</a>
+    <a id="settings-link" th:href="@{/user/settings}" class="item"><i class="fa-solid fa-gear"></i> Settings</a>
     <a th:href="@{/logout}" class="itme"><i class="fa-solid fa-right-from-bracket"></i> </i>Logout</a>
     <div class="divider"></div>
 

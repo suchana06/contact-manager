@@ -24,45 +24,51 @@
           <div class="search-result">
           </div>
         </div>
+        <div class="table-responsive my-4">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="c : ${contacts}">
+                <th scope="row" th:text="${c.cId}"></th>
+                <td scope="row">
+                  <img class="my-profile" th:src="@{'/images/'+${c.image}}" alt="profile picture">
+                  <span th:text="${c.name}"></span>
+                </td>
+                <td scope="row">
+                  <a th:href="@{'/user/contact/'+${c.cId}}"><span th:text="${c.email}"></span></a>
+                </td>
+                <td scope="row" th:text="${c.phone}"></td>
+                <td>
+                  <!-- <button th:href="'/user/delete/'+${c.cId}" class="btn btn-danger">Delete Contact</button> -->
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="c : ${contacts}">
-              <th scope="row" th:text="${c.cId}"></th>
-              <td scope="row">
-                <img class="my-profile" th:src="@{'/images/'+${c.image}}" alt="profile picture">
-                <span th:text="${c.name}"></span>
-              </td>
-              <td scope="row">
-                <a th:href="@{'/user/contact/'+${c.cId}}"><span th:text="${c.email}"></span></a>
-              </td>
-              <td scope="row" th:text="${c.phone}"></td>
-              <td>
-                <!-- <button th:href="'/user/delete/'+${c.cId}" class="btn btn-danger">Delete Contact</button> -->
+                  <a th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger md-3">Delete Contact</a>
 
-                <a th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger md-3">Delete Contact</a>
+                  <form th:action="@{'/user/update/'+${c.cId}}" method="post">
+                    <button type="submit" class="btn btn-primary">Update Contact</button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-                <form th:action="@{'/user/update/'+${c.cId}}" method="post">
-                  <button type="submit" class="btn btn-primary">Update Contact</button>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
+    <script>
+      let home = document.getElementById("contacts-link");
+      home.style.backgroundColor = "#e2e2e2";
+    </script>
   </section>
   <script th:src="@{js/script.js}"></script>
-
+  
 </body>
 
 </html>

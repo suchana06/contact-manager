@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normaluser/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3>Change Password</h3>
+                            <form th:action="@{/user/change-pass}" method="post">
+                                <div class="form-group my-2">
+                                    <label for="password">Old Password : </label>
+                                    <input name="old" type="password" class="form-control" placeholder="Enter Old Password">
+                                </div>
+                                <div class="form-group my-2">
+                                    <label for="password">New Password : </label>
+                                    <input name="new" type="password" class="form-control" placeholder="Enter New Password">
+                                </div>
+                                <div class="contaner text-center">
+                                    <button type="submit" class="btn btn-success">Change</button>
+                                    <button type="reset" class="btn btn-warning">Reset Fields</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            let home = document.getElementById("settings-link");
+            home.style.backgroundColor="#e2e2e2";
+        </script>
+
+    </section>
+
+</body>
+
+</html>

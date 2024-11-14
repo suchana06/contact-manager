@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,9 @@ public class UserController {
 
     @Autowired
     private ContactRepository cm;
+
+    @Autowired
+    private BCryptPasswordEncoder bp;
 
     @ModelAttribute
     public void showCommonData(Model m, Principal p) {
@@ -180,5 +184,27 @@ public class UserController {
         m.addAttribute("user",user);
         m.addAttribute("title", "Your Profile");
         return "normaluser/profile";
+    }
+
+    //settings page
+    @GetMapping("/settings")
+    public String settings(Model m){
+        m.addAttribute("title","Settings Page");
+        return "normaluser/settings";
+    }
+    @PostMapping("/change-pass")
+    public String changepass(@RequestParam("old") String oldpass, @RequestParam("new") String newpass, Principal p, HttpSession session){
+        System.out.println(oldpass+" "+newpass);
+        User user = this.hm.getUserByUsername(p.getName());
+        if(bp.matches(oldpass, user.getPassword())){
+            //change pass
+            user.setPassword(this.bp.encode(newpass));
+            this.hm.save(user);
+            session.setAttribute("message", new Message("Password Updated successfully","success"));
+        }else{
+            session.setAttribute("message", new Message("Wrong password entered","danger"));
+            return "redirect:/user/settings";
+        }
+        return "redirect:/user/index";
     }
 }
