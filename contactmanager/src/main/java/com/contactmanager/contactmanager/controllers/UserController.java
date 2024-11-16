@@ -187,7 +187,7 @@ public class UserController {
     }
 
     //settings page
-    @GetMapping("/settings")
+    @RequestMapping("/settings")
     public String settings(Model m){
         m.addAttribute("title","Settings Page");
         return "normaluser/settings";

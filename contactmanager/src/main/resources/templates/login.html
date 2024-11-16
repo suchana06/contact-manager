@@ -12,16 +12,23 @@
     <section>
         <div class="wrapper fadeInDown">
             <div id="formContent">
-                <h2>Login First</h2>
+                <h2 style="color: white;">Login Here</h2>
                 <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
                 <div th:if="${param.logout}" class="alert alert-success">You are logged out now</div>
-
+                <div class="alert alert-success" th:if="${session.changed}" th:text="${session.changed.content}"></div>
+                <div class="container" th:if="${session.failed}">
+                  <div th:classappend="${'alert-'+ session.failed.type}" class="alert">
+                    <p th:text="${session.failed.content}"></p>
+                  </div>
+                  <th:block th:text="${@sessionHelper.removeSession()}"></th:block>
+                </div>
               <!-- Login Form -->
               <form method="post" th:action="@{/dologin}">
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
               </form>
+              <a th:href="@{/forgetpass}">Forgot Password ?</a>
             </div>
     </section>
     

@@ -78,4 +78,11 @@ public class HomeController {
         m.addAttribute("title", "Login page");
         return "login";
     }
+
+    @RequestMapping("/failed")
+    public String failedlogin(Model m, HttpSession session){
+        session.setAttribute("failed", new Message("Bad Credentials-Try Again","danger"));
+        m.addAttribute("title", "Login page");
+        return "login";
+    }
 }

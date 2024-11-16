@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet">
+    <title>login</title>
+</head>
+
+<body>
+
+    <section>
+        <div class="container mt-4">
+            <div id="" class="card text-center" style="width: 100% ;background-color: #089789;">
+
+                <div class="container" th:if="${session.message}">
+                    <div th:classappend="${'alert-'+ session.message.type}" class="alert">
+                        <p th:text="${session.message.content}"></p>
+                    </div>
+                    <th:block th:text="${@sessionHelper.removeSession()}"></th:block>
+                </div>
+                <br>
+                <form th:action="@{/verify-otp}" method="post">
+                    <input type="password" name="otp" id="otp" placeholder="Enter OTP here" class="p-3 mt-4"
+                        style="width: 40%;" required>
+                    <br>
+                    <Button class="btn btn-warning mt-2">Verify OTP</Button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
