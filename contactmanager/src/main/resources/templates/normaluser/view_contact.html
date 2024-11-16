@@ -39,7 +39,7 @@
               <tr th:each="c : ${contacts}">
                 <th scope="row" th:text="${c.cId}"></th>
                 <td scope="row">
-                  <img class="my-profile" th:src="@{'/images/'+${c.image}}" alt="profile picture">
+                  <img class="my-profile" th:src="@{'/images/'+${c.image}}" alt="IMAGE">
                   <span th:text="${c.name}"></span>
                 </td>
                 <td scope="row">

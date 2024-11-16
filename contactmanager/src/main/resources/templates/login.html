@@ -10,9 +10,9 @@
 <body>
 
     <section>
-        <div class="wrapper fadeInDown">
+        <div class="wrapper container">
             <div id="formContent">
-                <h2 style="color: white;">Login Here</h2>
+                <h2 style="color: white;">Please Login</h2>
                 <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
                 <div th:if="${param.logout}" class="alert alert-success">You are logged out now</div>
                 <div class="alert alert-success" th:if="${session.changed}" th:text="${session.changed.content}"></div>
@@ -24,11 +24,11 @@
                 </div>
               <!-- Login Form -->
               <form method="post" th:action="@{/dologin}">
-                <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
-                <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                <input type="text" id="username" class="fadeIn second" name="username" placeholder="username" autocomplete="off">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"  autocomplete="off">
                 <input type="submit" class="fadeIn fourth" value="Log In">
               </form>
-              <a th:href="@{/forgetpass}">Forgot Password ?</a>
+              <a th:href="@{/forgetpass}" style="color: white;">Forgot Password ?</a>
             </div>
     </section>
     
